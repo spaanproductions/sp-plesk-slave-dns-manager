@@ -1,7 +1,7 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 pm_Loader::registerAutoload();
-pm_Context::init('slave-dns-manager');
+pm_Context::init('sp-slave-dns-manager');
 
 try {
     $result = pm_ApiCli::call('server_dns', array('--disable-custom-backend'));

@@ -1,7 +1,7 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 pm_Loader::registerAutoload();
-pm_Context::init('slave-dns-manager');
+pm_Context::init('sp-slave-dns-manager');
 
 $jsonInput = file_get_contents('php://stdin');
 $data = json_decode($jsonInput);
