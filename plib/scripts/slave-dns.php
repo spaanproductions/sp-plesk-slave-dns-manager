@@ -22,7 +22,7 @@ foreach ($data as $task) {
         continue;
     }
 
-    $rndc = new Modules_SlaveDnsManager_Rndc();
+    $rndc = new Modules_SpSlaveDnsManager_Rndc();
 
     switch ($command) {
         case 'create':

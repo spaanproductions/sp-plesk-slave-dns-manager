@@ -19,7 +19,7 @@ class IndexController extends pm_Controller_Action
     public function enableCustomBackendAction()
     {
         try {
-            (new Modules_SlaveDnsManager_CustomBackendService())->enable();
+            (new Modules_SpSlaveDnsManager_CustomBackendService())->enable();
             $this->_status->addInfo($this->lmsg('customBackendEnabled'));
         } catch (\Exception $e) {
             $this->_status->addError($this->lmsg('customBackendEnablingError', ['error' => $e->getMessage()]));
@@ -32,19 +32,19 @@ class IndexController extends pm_Controller_Action
     {
         $this->view->pageTitle = $this->lmsg('listPageTitle');
 
-        if (!(new Modules_SlaveDnsManager_CustomBackendService())->isEnabled(pm_Bootstrap::getDbAdapter())){
+        if (!(new Modules_SpSlaveDnsManager_CustomBackendService())->isEnabled(pm_Bootstrap::getDbAdapter())){
             $this->_status->addWarning($this->lmsg('customBackendAlert', [
                 'enableUrl' => pm_Context::getActionUrl('index', 'enable-custom-backend')
             ]), true);
         }
 
-        $slavesList = new Modules_SlaveDnsManager_List_Slaves($this->view, $this->_request);
+        $slavesList = new Modules_SpSlaveDnsManager_List_Slaves($this->view, $this->_request);
         $this->view->list = $slavesList;
     }
 
     public function listDataAction()
     {
-        $slavesList = new Modules_SlaveDnsManager_List_Slaves($this->view, $this->_request);
+        $slavesList = new Modules_SpSlaveDnsManager_List_Slaves($this->view, $this->_request);
         $this->_helper->json($slavesList->fetchData());
     }
 
@@ -53,7 +53,7 @@ class IndexController extends pm_Controller_Action
         $this->view->pageTitle = $this->lmsg('addPageTitle');
         $this->view->uplevelLink = pm_Context::getBaseUrl();
 
-        $form = new Modules_SlaveDnsManager_Form_Add();
+        $form = new Modules_SpSlaveDnsManager_Form_Add();
 
         if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost())) {
             $form->process();
@@ -71,8 +71,8 @@ class IndexController extends pm_Controller_Action
         $this->view->uplevelLink = pm_Context::getBaseUrl();
 
         $config = $this->_getParam('config');
-        $slave = new Modules_SlaveDnsManager_Slave($config);
-        $this->view->form = new Modules_SlaveDnsManager_Form_View($slave);
+        $slave = new Modules_SpSlaveDnsManager_Slave($config);
+        $this->view->form = new Modules_SpSlaveDnsManager_Form_View($slave);
     }
 
     public function resyncAction()
@@ -101,7 +101,7 @@ class IndexController extends pm_Controller_Action
 
         foreach ($configs as $config) {
             try {
-                $slave = new Modules_SlaveDnsManager_Slave($config);
+                $slave = new Modules_SpSlaveDnsManager_Slave($config);
                 $slave->remove();
                 $this->_status->addMessage('info', $this->lmsg('slaveRemoved'));
             } catch (pm_Exception $e) {

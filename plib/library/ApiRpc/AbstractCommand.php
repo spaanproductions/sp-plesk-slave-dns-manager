@@ -1,10 +1,10 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 
-namespace Modules_SlaveDnsManager_ApiRpc;
+namespace Modules_SpSlaveDnsManager_ApiRpc;
 
-use Modules_SlaveDnsManager_ApiRpc\Exception\ApiException;
-use Modules_SlaveDnsManager_ApiRpc\Exception\PermissionDeniedException;
+use Modules_SpSlaveDnsManager_ApiRpc\Exception\ApiException;
+use Modules_SpSlaveDnsManager_ApiRpc\Exception\PermissionDeniedException;
 
 abstract class AbstractCommand
 {

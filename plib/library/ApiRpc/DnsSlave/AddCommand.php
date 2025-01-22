@@ -1,11 +1,11 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 
-namespace Modules_SlaveDnsManager_ApiRpc\DnsSlave;
+namespace Modules_SpSlaveDnsManager_ApiRpc\DnsSlave;
 
-use Modules_SlaveDnsManager_ApiRpc\AbstractCommand;
-use Modules_SlaveDnsManager_ApiRpc\Exception\ApiException;
-use Modules_SlaveDnsManager_Slave;
+use Modules_SpSlaveDnsManager_ApiRpc\AbstractCommand;
+use Modules_SpSlaveDnsManager_ApiRpc\Exception\ApiException;
+use Modules_SpSlaveDnsManager_Slave;
 
 class AddCommand extends AbstractCommand
 {
@@ -30,7 +30,7 @@ class AddCommand extends AbstractCommand
 
     protected function _run()
     {
-        $slave = new Modules_SlaveDnsManager_Slave();
+        $slave = new Modules_SpSlaveDnsManager_Slave();
 
         $ip = $this->_params['ip'];
         $slave->save([

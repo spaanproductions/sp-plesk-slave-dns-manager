@@ -1,10 +1,10 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_Form_View extends pm_Form_Simple
+class Modules_SpSlaveDnsManager_Form_View extends pm_Form_Simple
 {
     private $_slave;
 
-    public function __construct(Modules_SlaveDnsManager_Slave $slave)
+    public function __construct(Modules_SpSlaveDnsManager_Slave $slave)
     {
         $this->_slave = $slave;
 

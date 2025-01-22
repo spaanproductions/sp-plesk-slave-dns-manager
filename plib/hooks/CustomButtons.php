@@ -2,9 +2,9 @@
 // Copyright 1999-2021. Plesk International GmbH. All rights reserved.
 
 /**
- * Class Modules_SlaveDnsManager_CustomButtons
+ * Class Modules_SpSlaveDnsManager_CustomButtons
  */
-class Modules_SlaveDnsManager_CustomButtons extends pm_Hook_CustomButtons
+class Modules_SpSlaveDnsManager_CustomButtons extends pm_Hook_CustomButtons
 {
     public function getButtons()
     {

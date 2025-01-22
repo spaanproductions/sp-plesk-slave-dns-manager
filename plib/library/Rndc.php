@@ -1,8 +1,8 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_Rndc
+class Modules_SpSlaveDnsManager_Rndc
 {
-    private function _call(Modules_SlaveDnsManager_Slave $slave, $arguments, $verbose = false)
+    private function _call(Modules_SpSlaveDnsManager_Slave $slave, $arguments, $verbose = false)
     {
         $arguments = join(' ', [
             "-b \"{$slave->getMasterIp()}\"",
@@ -36,18 +36,18 @@ class Modules_SlaveDnsManager_Rndc
         return $code == 0;
     }
 
-    public function addZone($domain, Modules_SlaveDnsManager_Slave $slave = null)
+    public function addZone($domain, Modules_SpSlaveDnsManager_Slave $slave = null)
     {
-        $slaves = null === $slave ? Modules_SlaveDnsManager_Slave::getList() : [$slave];
+        $slaves = null === $slave ? Modules_SpSlaveDnsManager_Slave::getList() : [$slave];
         foreach ($slaves as $slave) {
             $this->_call($slave, "addzone \"{$domain}\" \"{$slave->getRndcClass()}\" \"{$slave->getRndcView()}\"" .
                 " \"{ type slave; file \\\"{$domain}\\\"; masters { {$slave->getMasterPublicIp()}; }; };\"");
         }
     }
 
-    public function updateZone($domain, Modules_SlaveDnsManager_Slave $slave = null)
+    public function updateZone($domain, Modules_SpSlaveDnsManager_Slave $slave = null)
     {
-        $slaves = null === $slave ? Modules_SlaveDnsManager_Slave::getList() : [$slave];
+        $slaves = null === $slave ? Modules_SpSlaveDnsManager_Slave::getList() : [$slave];
         foreach ($slaves as $slave) {
             $result = $this->_call($slave, "refresh \"{$domain}\" \"{$slave->getRndcClass()}\" \"{$slave->getRndcView()}\"");
             if (false === $result) {
@@ -56,9 +56,9 @@ class Modules_SlaveDnsManager_Rndc
         }
     }
 
-    public function deleteZone($domain, Modules_SlaveDnsManager_Slave $slave = null)
+    public function deleteZone($domain, Modules_SpSlaveDnsManager_Slave $slave = null)
     {
-        $slaves = null === $slave ? Modules_SlaveDnsManager_Slave::getList() : [$slave];
+        $slaves = null === $slave ? Modules_SpSlaveDnsManager_Slave::getList() : [$slave];
         foreach ($slaves as $slave) {
             $slaveStatus = $this->checkStatus($slave);
             // version: 9.9.4-RedHat-9.9.4-51.el7_4.2 (none) <id:8f9657aa>
@@ -71,7 +71,7 @@ class Modules_SlaveDnsManager_Rndc
         }
     }
 
-    public function checkStatus(Modules_SlaveDnsManager_Slave $slave)
+    public function checkStatus(Modules_SpSlaveDnsManager_Slave $slave)
     {
         return $this->_call($slave, "status", true);
     }

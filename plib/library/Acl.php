@@ -1,6 +1,6 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_Acl
+class Modules_SpSlaveDnsManager_Acl
 {
     const PROTOCOL_VERSION = '1.6.9.1';
 

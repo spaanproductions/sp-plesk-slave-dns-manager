@@ -1,6 +1,6 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_IpAddress
+class Modules_SpSlaveDnsManager_IpAddress
 {
     private static $_ipAddresses;
     private static $_defaultIpAddress;

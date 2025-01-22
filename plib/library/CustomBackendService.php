@@ -1,7 +1,7 @@
 <?php
 // Copyright 1999-2021. Plesk International GmbH. All rights reserved.
 
-class Modules_SlaveDnsManager_CustomBackendService
+class Modules_SpSlaveDnsManager_CustomBackendService
 {
     public function enable(): void
     {

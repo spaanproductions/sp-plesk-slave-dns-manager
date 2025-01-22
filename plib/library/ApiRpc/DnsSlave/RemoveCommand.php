@@ -1,10 +1,10 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 
-namespace Modules_SlaveDnsManager_ApiRpc\DnsSlave;
+namespace Modules_SpSlaveDnsManager_ApiRpc\DnsSlave;
 
-use Modules_SlaveDnsManager_ApiRpc\AbstractCommand;
-use Modules_SlaveDnsManager_Slave;
+use Modules_SpSlaveDnsManager_ApiRpc\AbstractCommand;
+use Modules_SpSlaveDnsManager_Slave;
 
 class RemoveCommand extends AbstractCommand
 {
@@ -16,7 +16,7 @@ class RemoveCommand extends AbstractCommand
     protected function _run()
     {
         $config = $this->_params['config'];
-        $slave = new Modules_SlaveDnsManager_Slave($config);
+        $slave = new Modules_SpSlaveDnsManager_Slave($config);
 
         $slave->remove();
 

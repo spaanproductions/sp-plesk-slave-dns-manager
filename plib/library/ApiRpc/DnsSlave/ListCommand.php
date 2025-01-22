@@ -1,11 +1,11 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 
-namespace Modules_SlaveDnsManager_ApiRpc\DnsSlave;
+namespace Modules_SpSlaveDnsManager_ApiRpc\DnsSlave;
 
-use Modules_SlaveDnsManager_ApiRpc\AbstractCommand;
-use Modules_SlaveDnsManager_Rndc;
-use Modules_SlaveDnsManager_Slave;
+use Modules_SpSlaveDnsManager_ApiRpc\AbstractCommand;
+use Modules_SpSlaveDnsManager_Rndc;
+use Modules_SpSlaveDnsManager_Slave;
 
 class ListCommand extends AbstractCommand
 {
@@ -13,9 +13,9 @@ class ListCommand extends AbstractCommand
     protected function _run()
     {
         $data = [];
-        $rndc = new Modules_SlaveDnsManager_Rndc();
+        $rndc = new Modules_SpSlaveDnsManager_Rndc();
 
-        foreach (Modules_SlaveDnsManager_Slave::getList() as $slave) {
+        foreach (Modules_SpSlaveDnsManager_Slave::getList() as $slave) {
             try {
                 $details = $rndc->checkStatus($slave);
                 $status = 'ok';

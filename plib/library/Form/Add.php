@@ -1,6 +1,6 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_Form_Add extends pm_Form_Simple
+class Modules_SpSlaveDnsManager_Form_Add extends pm_Form_Simple
 {
     public function init()
     {
@@ -67,13 +67,13 @@ class Modules_SlaveDnsManager_Form_Add extends pm_Form_Simple
 
     public function process()
     {
-        $slave = new Modules_SlaveDnsManager_Slave();
+        $slave = new Modules_SpSlaveDnsManager_Slave();
         $slave->save($this->getValues());
     }
 
     public function isExistingSlave($data)
     {
-        $slave = new Modules_SlaveDnsManager_Slave("slave_$data.conf");
+        $slave = new Modules_SpSlaveDnsManager_Slave("slave_$data.conf");
         
         if (!file_exists($slave->getConfigPath())) {
             return true;
@@ -99,7 +99,7 @@ class Modules_SlaveDnsManager_Form_Add extends pm_Form_Simple
 
     private function _getIps()
     {
-        return Modules_SlaveDnsManager_IpAddress::getAvailable();
+        return Modules_SpSlaveDnsManager_IpAddress::getAvailable();
     }
 
     private function _getRandomSecret()

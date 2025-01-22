@@ -1,15 +1,15 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_List_Slaves extends pm_View_List_Simple
+class Modules_SpSlaveDnsManager_List_Slaves extends pm_View_List_Simple
 {
     public function __construct(Zend_View $view, Zend_Controller_Request_Abstract $request)
     {
         parent::__construct($view, $request);
 
         $data = array();
-        foreach (Modules_SlaveDnsManager_Slave::getList() as $slave) {
+        foreach (Modules_SpSlaveDnsManager_Slave::getList() as $slave) {
             try {
-                $rndc = new Modules_SlaveDnsManager_Rndc();
+                $rndc = new Modules_SpSlaveDnsManager_Rndc();
                 $details = $rndc->checkStatus($slave);
                 $icon = 'ok';
             } catch (Exception $e) {

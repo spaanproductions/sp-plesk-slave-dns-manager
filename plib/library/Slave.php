@@ -1,6 +1,6 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
-class Modules_SlaveDnsManager_Slave
+class Modules_SpSlaveDnsManager_Slave
 {
     private static function _getPath()
     {
@@ -62,14 +62,14 @@ class Modules_SlaveDnsManager_Slave
 
     public function getMasterIp()
     {
-        return pm_Settings::get("masterIp-{$this->getIp()}", Modules_SlaveDnsManager_IpAddress::getDefault());
+        return pm_Settings::get("masterIp-{$this->getIp()}", Modules_SpSlaveDnsManager_IpAddress::getDefault());
     }
 
     public function getMasterPublicIp()
     {
-	    return pm_Settings::get("masterIp-{$this->getIp()}", Modules_SlaveDnsManager_IpAddress::getDefault());
-        // $ipAddress =  pm_Settings::get("masterIp-{$this->getIp()}", Modules_SlaveDnsManager_IpAddress::getDefault());
-        // return Modules_SlaveDnsManager_IpAddress::getPublic($ipAddress);
+	    return pm_Settings::get("masterIp-{$this->getIp()}", Modules_SpSlaveDnsManager_IpAddress::getDefault());
+        // $ipAddress =  pm_Settings::get("masterIp-{$this->getIp()}", Modules_SpSlaveDnsManager_IpAddress::getDefault());
+        // return Modules_SpSlaveDnsManager_IpAddress::getPublic($ipAddress);
     }
 
     public function getPort()
@@ -111,7 +111,7 @@ class Modules_SlaveDnsManager_Slave
 
         $this->_saveConfig($this->getConfigPath(), $this->_renderConfig($slaveIp, $keySecret, $keyAlgorithm));
 
-        $acl = new Modules_SlaveDnsManager_Acl();
+        $acl = new Modules_SpSlaveDnsManager_Acl();
         $acl->add($slaveIp);
     }
 
@@ -167,7 +167,7 @@ CONF;
         }
 
         if (preg_match('/slave_(?<slaveIp>.+)\.conf/', $this->_config, $matches)) {
-            $acl = new Modules_SlaveDnsManager_Acl();
+            $acl = new Modules_SpSlaveDnsManager_Acl();
             $acl->remove($matches['slaveIp']);
 
             $settings = ['masterIp', 'port', 'rndcKeyId', 'rndcClass', 'rndcView'];

@@ -1,7 +1,7 @@
 <?php
 // Copyright 1999-2017. Parallels IP Holdings GmbH.
 
-class Modules_SlaveDnsManager_Navigation extends pm_Hook_Navigation
+class Modules_SpSlaveDnsManager_Navigation extends pm_Hook_Navigation
 {
     public function getNavigation()
     {
