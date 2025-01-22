@@ -67,8 +67,9 @@ class Modules_SlaveDnsManager_Slave
 
     public function getMasterPublicIp()
     {
-        $ipAddress =  pm_Settings::get("masterIp-{$this->getIp()}", Modules_SlaveDnsManager_IpAddress::getDefault());
-        return Modules_SlaveDnsManager_IpAddress::getPublic($ipAddress);
+	    return pm_Settings::get("masterIp-{$this->getIp()}", Modules_SlaveDnsManager_IpAddress::getDefault());
+        // $ipAddress =  pm_Settings::get("masterIp-{$this->getIp()}", Modules_SlaveDnsManager_IpAddress::getDefault());
+        // return Modules_SlaveDnsManager_IpAddress::getPublic($ipAddress);
     }
 
     public function getPort()
